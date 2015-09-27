@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<bpel:process xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ode="http://www.apache.org/ode/type/extension" xmlns:this="http://simplebranchingoption.com/SimpleBranchingOption/SimpleBranchingOption" xmlns:diag="http://simplebranchingoption.com/SimpleBranchingOption" xmlns:Client="http://simplebranchingoption.com/SimpleBranchingOption/Client" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:bpmn="http://www.intalio.com/bpms" xmlns:atomic="http://ode.apache.org/atomicScope" queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0" bpmn:label="SimpleBranchingOption" name="SimpleBranchingOption" bpmn:id="_7PCtYGU7EeW9QZEuU0sX4Q" targetNamespace="http://simplebranchingoption.com/SimpleBranchingOption/SimpleBranchingOption">
+  <bpel:import namespace="http://simplebranchingoption.com/SimpleBranchingOption" location="SimpleBranchingOption.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+  <bpel:import namespace="http://simplebranchingoption.com/SimpleBranchingOption/SimpleBranchingOption" location="SimpleBranchingOption-SimpleBranchingOption.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+  <bpel:partnerLinks>
+    <bpel:partnerLink name="simpleBranchingOptionAndClientPlkVar" partnerLinkType="diag:SimpleBranchingOptionAndClient" myRole="SimpleBranchingOption_for_Client"/>
+  </bpel:partnerLinks>
+  <bpel:variables>
+    <bpel:variable name="thisReceiveRequestMsg" messageType="this:ReceiveRequest"/>
+    <bpel:variable name="thisReceiveResponseMsg" messageType="this:ReceiveResponse"/>
+  </bpel:variables>
+  <bpel:sequence>
+    <bpel:receive partnerLink="simpleBranchingOptionAndClientPlkVar" portType="this:ForClient" operation="Receive" variable="thisReceiveRequestMsg" createInstance="yes" bpmn:label="Receive" name="Receive" bpmn:id="_DdR6IGU8EeW9QZEuU0sX4Q"></bpel:receive>
+    <bpel:assign name="init-variables-SimpleBranchingOption" bpmn:id="_DdR6IGU8EeW9QZEuU0sX4Q">
+      <bpel:copy bpmn:label="$thisReceiveResponseMsg">
+        <bpel:from>
+          <bpel:literal>
+<this:ReceiveResponse></this:ReceiveResponse></bpel:literal>
+        </bpel:from>
+        <bpel:to>$thisReceiveResponseMsg.body</bpel:to>
+      </bpel:copy>
+    </bpel:assign>
+    <bpel:if>
+      <bpel:condition>$thisReceiveRequestMsg.body = "Sajjan"</bpel:condition>
+      <bpel:sequence>
+        <bpel:assign bpmn:label="Output" name="Output" bpmn:id="_kpt-8GU-EeW9QZEuU0sX4Q">
+          <bpel:copy>
+            <bpel:from>"This is the correct output of this process"</bpel:from>
+            <bpel:to>$thisReceiveRequestMsg.body</bpel:to>
+          </bpel:copy>
+        </bpel:assign>
+      </bpel:sequence>
+      <bpel:else>
+        <bpel:sequence>
+          <bpel:assign bpmn:label="Default" name="Default" bpmn:id="_nbx24GU-EeW9QZEuU0sX4Q">
+            <bpel:copy>
+              <bpel:from>"Condition Failed Bro"</bpel:from>
+              <bpel:to>$thisReceiveRequestMsg.body</bpel:to>
+            </bpel:copy>
+          </bpel:assign>
+        </bpel:sequence>
+      </bpel:else>
+    </bpel:if>
+    <bpel:empty bpmn:label="Resultanr" name="Resultanr" bpmn:id="_x-8ToGU-EeW9QZEuU0sX4Q">
+      <bpel:links>
+        <bpel:targets></bpel:targets>
+      </bpel:links>
+    </bpel:empty>
+    <bpel:assign bpmn:label="Reply" name="Reply" bpmn:id="_ueq_8GVAEeW9QZEuU0sX4Q">
+      <bpel:copy>
+        <bpel:from>$thisReceiveRequestMsg.body</bpel:from>
+        <bpel:to>$thisReceiveResponseMsg.body</bpel:to>
+      </bpel:copy>
+    </bpel:assign>
+    <bpel:reply partnerLink="simpleBranchingOptionAndClientPlkVar" portType="this:ForClient" operation="Receive" variable="thisReceiveResponseMsg" bpmn:label="Reply" name="Reply-1" bpmn:id="_ueq_8GVAEeW9QZEuU0sX4Q"></bpel:reply>
+  </bpel:sequence>
+</bpel:process>

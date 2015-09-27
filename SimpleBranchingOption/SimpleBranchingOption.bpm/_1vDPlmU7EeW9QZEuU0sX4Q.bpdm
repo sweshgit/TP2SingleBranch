@@ -1,0 +1,31 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:SimpleBranchingOption="http://thisdiagram/SimpleBranchingOption" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diag="http://thisdiagram" xmlns:this="http://thisdiagram/Client" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Client">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/SimpleBranchingOption" bpdm:prefix="SimpleBranchingOption" bpdm:comment="contrib=&apos;partner-pool:///_7PCtYGU7EeW9QZEuU0sX4Q"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_7PCtYGU7EeW9QZEuU0sX4Q"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Client" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_7PCtYGU7EeW9QZEuU0sX4Q" bpdm:label="SimpleBranchingOption"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:label="Client" bpdm:ID="_1vDPlmU7EeW9QZEuU0sX4Q">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="simpleBranchingOptionAndClientPlkVar" partnerLinkType="diag:SimpleBranchingOptionAndClient" initializePartnerRole="yes" partnerRole="SimpleBranchingOption_for_Client" bpdm:invokedService="SimpleBranchingOption:CanonicServiceForClient" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/SimpleBranchingOption/Client" bpdm:invokedIsDefault="true" bpdm:clientTasks="_1vDPlmU7EeW9QZEuU0sX4Q:_1vDPmGU7EeW9QZEuU0sX4Q" bpdm:isManaged="true" bpdm:otherPoolId="_7PCtYGU7EeW9QZEuU0sX4Q"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="simpleBranchingOptionReceiveRequestMsg" messageType="SimpleBranchingOption:ReceiveRequest" bpdm:id="_z5oMwGVAEeW9QZEuU0sX4Q" bpdm:messageIds=" out:_z48QQGVAEeW9QZEuU0sX4Q">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="SimpleBranchingOption:ReceiveRequest" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="simpleBranchingOptionReceiveResponseMsg" messageType="SimpleBranchingOption:ReceiveResponse" bpdm:id="_3ohgYGVAEeW9QZEuU0sX4Q" bpdm:messageIds="inc:_3n0VwGVAEeW9QZEuU0sX4Q"/>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask operation="Receive" partnerLink="simpleBranchingOptionAndClientPlkVar" portType="SimpleBranchingOption:ForClient" isMyRole="false" enableSharing="false" bpdm:label="Send" bpdm:ID="_1vDPmGU7EeW9QZEuU0sX4Q">
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="simpleBranchingOptionReceiveRequestMsg" bpdm:msgVarScopeId="_1vDPlmU7EeW9QZEuU0sX4Q" bpdm:variableIsManaged="true" bpdm:messageType="SimpleBranchingOption:ReceiveRequest" bpdm:ID="_z48QQGVAEeW9QZEuU0sX4Q"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="simpleBranchingOptionReceiveResponseMsg" bpdm:msgVarScopeId="_1vDPlmU7EeW9QZEuU0sX4Q" bpdm:variableIsManaged="true" bpdm:messageType="SimpleBranchingOption:ReceiveResponse" bpdm:ID="_3n0VwGVAEeW9QZEuU0sX4Q"></bpdm:linkset>
+            </bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>

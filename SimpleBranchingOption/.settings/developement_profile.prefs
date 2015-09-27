@@ -1,0 +1,14 @@
+
+build.required=yes
+deploy_bundleShouldBeDeployed=true
+deploy_gi_serverUrl=http\://localhost\:8080/gi
+deploy_serverUrl=http\://localhost\:8080/ode
+deploymenttimeout=120
+diagram_baseUri=http\://simplebranchingoption.com
+eclipse.preferences.version=1
+full.build.required=no
+is.mapper.too.many.elements.exceeded=no
+reset.node.cache=yes
+serverpingtimeout=10
+type=non.unique
+uuid=25c208ab-1413-4d43-9050-989903b6646b
